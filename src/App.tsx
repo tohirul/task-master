@@ -1,12 +1,7 @@
 import React from "react";
+import AppRoutes from "@/routes/";
 function App(): React.JSX.Element {
-  return (
-    <div>
-      <div className="">
-        <h1>Hello!!!</h1>
-      </div>{" "}
-    </div>
-  );
+  return <AppRoutes />;
 }
 
 export default App;
