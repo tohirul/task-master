@@ -1,7 +1,6 @@
-import { createContext, useContext } from "react";
-import type { Store, StoreState } from "@/core/types/store.types";
-
-export const StoreContext = createContext<Store | null>(null);
+import { useContext } from "react";
+import type { StoreState } from "@/core/types/store.types";
+import { StoreContext } from "@/context/StoreContext";
 
 export const useStore = () => {
   const context = useContext(StoreContext);
