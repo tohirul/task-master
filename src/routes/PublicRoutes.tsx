@@ -1,12 +1,20 @@
-// routes/PublicRoutes.tsx
-import { Navigate, Outlet } from "react-router-dom";
+import { lazyRouteComponent } from "@tanstack/react-router";
+import { AppRoute, RootRoute } from "./routes";
 
-interface PublicRoutesProps {
-  isAuthenticated: boolean;
-}
-
-const PublicRoutes: React.FC<PublicRoutesProps> = ({ isAuthenticated }) => {
-  return !isAuthenticated ? <Outlet /> : <Navigate to="/dashboard" replace />;
-};
-
-export default PublicRoutes;
+export const PublicRoutes = [
+  AppRoute({
+    getParentRoute: () => RootRoute,
+    path: "/",
+    component: lazyRouteComponent(() => import("@/pages/gen/Home")),
+  }),
+  AppRoute({
+    getParentRoute: () => RootRoute,
+    path: "/sign-in",
+    component: lazyRouteComponent(() => import("@/pages/auth/Signin")),
+  }),
+  AppRoute({
+    getParentRoute: () => RootRoute,
+    path: "/sign-up",
+    component: lazyRouteComponent(() => import("@/pages/auth/Signup")),
+  }),
+];

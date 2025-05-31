@@ -1,7 +1,8 @@
 import React from "react";
-import AppRoutes from "@/routes/";
+
+import { RouterProvider } from "@/providers/RouterProvider";
 function App(): React.JSX.Element {
-  return <AppRoutes />;
+  return <RouterProvider />;
 }
 
 export default App;
