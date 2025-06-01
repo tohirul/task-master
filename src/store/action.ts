@@ -1,9 +1,9 @@
 import { auth_action_types } from "@/core/types/action.types";
 
-export const loginUser = () => ({
+export const loginUser = (token: string) => ({
   type: auth_action_types.USER_LOGIN,
   payload: {
-    token: "sample_token",
+    token,
   },
 });
 

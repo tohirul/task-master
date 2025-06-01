@@ -6,7 +6,13 @@ declare module "@tanstack/react-router" {
     router: typeof router;
   }
 }
-const router = createRouter({ routeTree });
+const router = createRouter({
+  routeTree,
+  defaultPreload: "intent",
+
+  defaultPendingComponent: () => null,
+  defaultErrorComponent: () => <h1>Something went wrong!!!</h1>,
+});
 
 export function RouterProvider() {
   return <Router router={router} />;

@@ -10,12 +10,12 @@ export const useStore = () => {
   return context;
 };
 
-export const useSelector = <T>(callback: (state: StoreState) => T): T => {
+export const useSelector = <T>(selector: (state: StoreState) => T): T => {
   const context = useContext(StoreContext);
   if (!context) {
     throw new Error("useSelector must be used within a StoreProvider");
   }
-  return context.getValue(callback);
+  return context.getValue(selector);
 };
 
 export const useDispatch = () => {
@@ -25,6 +25,7 @@ export const useDispatch = () => {
   }
   return context.dispatch;
 };
+
 export const useStoreState = () => {
   const context = useContext(StoreContext);
   if (!context) {

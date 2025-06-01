@@ -1,19 +1,14 @@
-import type { auth_action_types } from "./action.types";
-import type { AuthState, User } from "./auth.types";
+import type { auth_action_types } from "@/core/types/action.types";
+import type { AuthState, User } from "@/core/types/auth.types";
 
 export interface StoreState {
   auth: AuthState;
-  user: User;
+  user: User | null;
 }
 
 export type StoreAction =
   | { type: typeof auth_action_types.USER_LOGIN; payload: { token: string } }
   | { type: typeof auth_action_types.USER_LOGOUT };
-
-export type Action = {
-  type: string;
-  payload?: unknown;
-};
 
 export interface Store {
   state: StoreState;

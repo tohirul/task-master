@@ -1,5 +1,5 @@
 import type { StoreState, StoreAction } from "@/core/types/store.types";
-import { authReducer } from "./reducers/authReducer";
+import { authReducer } from "@/store/reducers/authReducer";
 
 export const rootReducer = (
   state: StoreState,

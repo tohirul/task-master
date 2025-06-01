@@ -12,9 +12,10 @@ export const StoreProvider = ({ children }: { children: React.ReactNode }) => {
     return {
       state,
       dispatch,
-      getValue: (callback) => callback(state),
+      getValue: (selector) => selector(state),
     };
-  }, [state, dispatch]);
+  }, [state]);
+
   return (
     <StoreContext.Provider value={store}>{children}</StoreContext.Provider>
   );
