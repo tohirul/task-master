@@ -712,6 +712,14 @@
   resolved "https://registry.yarnpkg.com/@tanstack/history/-/history-1.115.0.tgz#ded6595eaed4abd94127b539e51fe6de95f65ff8"
   integrity sha512-K7JJNrRVvyjAVnbXOH2XLRhFXDkeP54Kt2P4FR1Kl2KDGlIbkua5VqZQD2rot3qaDrpufyUa63nuLai1kOLTsQ==
 
+"@tanstack/react-router-devtools@^1.120.13":
+  version "1.120.13"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-router-devtools/-/react-router-devtools-1.120.13.tgz#071f4c4618ba2947c657d42e59aba14b91c41b8e"
+  integrity sha512-HP9Qd1SBzN/TaAw5TPeD+9xCytBTZy+HM1kGRimXqSy8aOKlOkPa4fRcPyA+OWpB9CgiLKHDu6UrVVb2ZBAd6w==
+  dependencies:
+    "@tanstack/router-devtools-core" "^1.120.13"
+    solid-js "^1.9.5"
+
 "@tanstack/react-router@^1.120.13":
   version "1.120.13"
   resolved "https://registry.yarnpkg.com/@tanstack/react-router/-/react-router-1.120.13.tgz#d1b04721a7487ae10233a05a196d9ea5b2b8a4ca"
@@ -740,6 +748,23 @@
     "@tanstack/history" "1.115.0"
     "@tanstack/store" "^0.7.0"
     tiny-invariant "^1.3.3"
+
+"@tanstack/router-devtools-core@^1.120.13":
+  version "1.120.13"
+  resolved "https://registry.yarnpkg.com/@tanstack/router-devtools-core/-/router-devtools-core-1.120.13.tgz#6b7f4cd0659525b2e8a7018e51e8c99f538bc982"
+  integrity sha512-H9Yt6BXUfdcKURo9FMBw4idZVCggWlKaxNdJjfu8Or7Wu6Zi58kRt17RJ4ys/n6D1WznyteQ3ya2JZpan5n2NA==
+  dependencies:
+    clsx "^2.1.1"
+    goober "^2.1.16"
+
+"@tanstack/router-devtools@^1.120.13":
+  version "1.120.13"
+  resolved "https://registry.yarnpkg.com/@tanstack/router-devtools/-/router-devtools-1.120.13.tgz#c66c2666d73cfb0d7803e75a30be9296d96c368c"
+  integrity sha512-gWrUHAD+Z92LndlGMpnbNdrOv/NlkEYbmMHVJ38itDikRDLW0WMs3yaPYycPd/vJewybQtG9ZcAHClxVM97toA==
+  dependencies:
+    "@tanstack/react-router-devtools" "^1.120.13"
+    clsx "^2.1.1"
+    goober "^2.1.16"
 
 "@tanstack/router-generator@^1.120.13":
   version "1.120.13"
@@ -1180,7 +1205,7 @@ chownr@^3.0.0:
   resolved "https://registry.yarnpkg.com/chownr/-/chownr-3.0.0.tgz#9855e64ecd240a9cc4267ce8a4aa5d24a1da15e4"
   integrity sha512-+IxzY9BZOQd/XuYPRmrvEVjF/nqj5kgT4kEq7VofrDoM1MxoRjEWkrCC3EtLi59TVawxTAn+orJwFQcrqEN1+g==
 
-clsx@^2.0.0:
+clsx@^2.0.0, clsx@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/clsx/-/clsx-2.1.1.tgz#eed397c9fd8bd882bfb18deab7102049a2f32999"
   integrity sha512-eYm0QWBtUrBWZWG0d386OGAw16Z995PiOVo2B7bjWSbHedGl5e0ZWaq65kOGgUSNesEIDkB9ISbTg/JK9dhCZA==
@@ -1223,7 +1248,7 @@ cross-spawn@^7.0.6:
     shebang-command "^2.0.0"
     which "^2.0.1"
 
-csstype@^3.0.2, csstype@^3.1.3:
+csstype@^3.0.2, csstype@^3.1.0, csstype@^3.1.3:
   version "3.1.3"
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.1.3.tgz#d80ff294d114fb0e6ac500fbf85b60137d7eff81"
   integrity sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==
@@ -2318,6 +2343,16 @@ semver@^7.6.0:
   resolved "https://registry.yarnpkg.com/semver/-/semver-7.7.2.tgz#67d99fdcd35cec21e6f8b87a7fd515a33f982b58"
   integrity sha512-RF0Fw+rO5AMf9MAyaRXI4AV0Ulj5lMHqVxxdSgiVbixSCXoEmmX/jk0CuJw4+3SqroYO9VoUh+HcuJivvtJemA==
 
+seroval-plugins@~1.3.0:
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/seroval-plugins/-/seroval-plugins-1.3.2.tgz#4200b538d699853c9bf5c3b7155c498c7c263a6a"
+  integrity sha512-0QvCV2lM3aj/U3YozDiVwx9zpH0q8A60CTWIv4Jszj/givcudPb48B+rkU5D51NJ0pTpweGMttHjboPa9/zoIQ==
+
+seroval@~1.3.0:
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/seroval/-/seroval-1.3.2.tgz#7e5be0dc1a3de020800ef013ceae3a313f20eca7"
+  integrity sha512-RbcPH1n5cfwKrru7v7+zrZvjLurgHhGyso3HTyGtRivGWgYjbOmGuivCQaORNELjNONoK35nj28EoWul9sb1zQ==
+
 shebang-command@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/shebang-command/-/shebang-command-2.0.0.tgz#ccd0af4f8835fbdc265b82461aaf0c36663f34ea"
@@ -2329,6 +2364,15 @@ shebang-regex@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/shebang-regex/-/shebang-regex-3.0.0.tgz#ae16f1644d873ecad843b0307b143362d4c42172"
   integrity sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==
+
+solid-js@^1.9.5:
+  version "1.9.7"
+  resolved "https://registry.yarnpkg.com/solid-js/-/solid-js-1.9.7.tgz#96ff7800648a30f22d29275264375589f3a725e9"
+  integrity sha512-/saTKi8iWEM233n5OSi1YHCCuh66ZIQ7aK2hsToPe4tqGm7qAejU1SwNuTPivbWAYq7SjuHVVYxxuZQNRbICiw==
+  dependencies:
+    csstype "^3.1.0"
+    seroval "~1.3.0"
+    seroval-plugins "~1.3.0"
 
 source-map-js@^1.2.1:
   version "1.2.1"

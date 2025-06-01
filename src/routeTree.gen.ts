@@ -11,142 +11,262 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as RoutesImport } from './routes/routes'
-import { Route as RouteTreeImport } from './routes/routeTree'
-import { Route as PublicRoutesImport } from './routes/PublicRoutes'
-import { Route as PrivateRoutesImport } from './routes/PrivateRoutes'
-import { Route as IndexImport } from './routes/index'
+import { Route as DashboardRouteImport } from './routes/dashboard/route'
+import { Route as PublicRouteImport } from './routes/_public/route'
+import { Route as AuthRouteImport } from './routes/_auth/route'
+import { Route as DashboardIndexImport } from './routes/dashboard/index'
+import { Route as PublicIndexImport } from './routes/_public/index'
+import { Route as DashboardSettingsImport } from './routes/dashboard/settings'
+import { Route as AuthSignUpImport } from './routes/_auth/sign-up'
+import { Route as AuthSignInImport } from './routes/_auth/sign-in'
+import { Route as AuthRegisterOrgImport } from './routes/_auth/register-org'
 
 // Create/Update Routes
 
-const RoutesRoute = RoutesImport.update({
-  id: '/routes',
-  path: '/routes',
+const DashboardRouteRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
   getParentRoute: () => rootRoute,
 } as any)
 
-const RouteTreeRoute = RouteTreeImport.update({
-  id: '/routeTree',
-  path: '/routeTree',
+const PublicRouteRoute = PublicRouteImport.update({
+  id: '/_public',
   getParentRoute: () => rootRoute,
 } as any)
 
-const PublicRoutesRoute = PublicRoutesImport.update({
-  id: '/PublicRoutes',
-  path: '/PublicRoutes',
+const AuthRouteRoute = AuthRouteImport.update({
+  id: '/_auth',
   getParentRoute: () => rootRoute,
 } as any)
 
-const PrivateRoutesRoute = PrivateRoutesImport.update({
-  id: '/PrivateRoutes',
-  path: '/PrivateRoutes',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const IndexRoute = IndexImport.update({
+const DashboardIndexRoute = DashboardIndexImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => DashboardRouteRoute,
+} as any)
+
+const PublicIndexRoute = PublicIndexImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => PublicRouteRoute,
+} as any)
+
+const DashboardSettingsRoute = DashboardSettingsImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => DashboardRouteRoute,
+} as any)
+
+const AuthSignUpRoute = AuthSignUpImport.update({
+  id: '/sign-up',
+  path: '/sign-up',
+  getParentRoute: () => AuthRouteRoute,
+} as any)
+
+const AuthSignInRoute = AuthSignInImport.update({
+  id: '/sign-in',
+  path: '/sign-in',
+  getParentRoute: () => AuthRouteRoute,
+} as any)
+
+const AuthRegisterOrgRoute = AuthRegisterOrgImport.update({
+  id: '/register-org',
+  path: '/register-org',
+  getParentRoute: () => AuthRouteRoute,
 } as any)
 
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
+    '/_auth': {
+      id: '/_auth'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRoute
+    }
+    '/_public': {
+      id: '/_public'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof PublicRouteImport
+      parentRoute: typeof rootRoute
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRoute
+    }
+    '/_auth/register-org': {
+      id: '/_auth/register-org'
+      path: '/register-org'
+      fullPath: '/register-org'
+      preLoaderRoute: typeof AuthRegisterOrgImport
+      parentRoute: typeof AuthRouteImport
+    }
+    '/_auth/sign-in': {
+      id: '/_auth/sign-in'
+      path: '/sign-in'
+      fullPath: '/sign-in'
+      preLoaderRoute: typeof AuthSignInImport
+      parentRoute: typeof AuthRouteImport
+    }
+    '/_auth/sign-up': {
+      id: '/_auth/sign-up'
+      path: '/sign-up'
+      fullPath: '/sign-up'
+      preLoaderRoute: typeof AuthSignUpImport
+      parentRoute: typeof AuthRouteImport
+    }
+    '/dashboard/settings': {
+      id: '/dashboard/settings'
+      path: '/settings'
+      fullPath: '/dashboard/settings'
+      preLoaderRoute: typeof DashboardSettingsImport
+      parentRoute: typeof DashboardRouteImport
+    }
+    '/_public/': {
+      id: '/_public/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof IndexImport
-      parentRoute: typeof rootRoute
+      preLoaderRoute: typeof PublicIndexImport
+      parentRoute: typeof PublicRouteImport
     }
-    '/PrivateRoutes': {
-      id: '/PrivateRoutes'
-      path: '/PrivateRoutes'
-      fullPath: '/PrivateRoutes'
-      preLoaderRoute: typeof PrivateRoutesImport
-      parentRoute: typeof rootRoute
-    }
-    '/PublicRoutes': {
-      id: '/PublicRoutes'
-      path: '/PublicRoutes'
-      fullPath: '/PublicRoutes'
-      preLoaderRoute: typeof PublicRoutesImport
-      parentRoute: typeof rootRoute
-    }
-    '/routeTree': {
-      id: '/routeTree'
-      path: '/routeTree'
-      fullPath: '/routeTree'
-      preLoaderRoute: typeof RouteTreeImport
-      parentRoute: typeof rootRoute
-    }
-    '/routes': {
-      id: '/routes'
-      path: '/routes'
-      fullPath: '/routes'
-      preLoaderRoute: typeof RoutesImport
-      parentRoute: typeof rootRoute
+    '/dashboard/': {
+      id: '/dashboard/'
+      path: '/'
+      fullPath: '/dashboard/'
+      preLoaderRoute: typeof DashboardIndexImport
+      parentRoute: typeof DashboardRouteImport
     }
   }
 }
 
 // Create and export the route tree
 
+interface AuthRouteRouteChildren {
+  AuthRegisterOrgRoute: typeof AuthRegisterOrgRoute
+  AuthSignInRoute: typeof AuthSignInRoute
+  AuthSignUpRoute: typeof AuthSignUpRoute
+}
+
+const AuthRouteRouteChildren: AuthRouteRouteChildren = {
+  AuthRegisterOrgRoute: AuthRegisterOrgRoute,
+  AuthSignInRoute: AuthSignInRoute,
+  AuthSignUpRoute: AuthSignUpRoute,
+}
+
+const AuthRouteRouteWithChildren = AuthRouteRoute._addFileChildren(
+  AuthRouteRouteChildren,
+)
+
+interface PublicRouteRouteChildren {
+  PublicIndexRoute: typeof PublicIndexRoute
+}
+
+const PublicRouteRouteChildren: PublicRouteRouteChildren = {
+  PublicIndexRoute: PublicIndexRoute,
+}
+
+const PublicRouteRouteWithChildren = PublicRouteRoute._addFileChildren(
+  PublicRouteRouteChildren,
+)
+
+interface DashboardRouteRouteChildren {
+  DashboardSettingsRoute: typeof DashboardSettingsRoute
+  DashboardIndexRoute: typeof DashboardIndexRoute
+}
+
+const DashboardRouteRouteChildren: DashboardRouteRouteChildren = {
+  DashboardSettingsRoute: DashboardSettingsRoute,
+  DashboardIndexRoute: DashboardIndexRoute,
+}
+
+const DashboardRouteRouteWithChildren = DashboardRouteRoute._addFileChildren(
+  DashboardRouteRouteChildren,
+)
+
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/PrivateRoutes': typeof PrivateRoutesRoute
-  '/PublicRoutes': typeof PublicRoutesRoute
-  '/routeTree': typeof RouteTreeRoute
-  '/routes': typeof RoutesRoute
+  '': typeof PublicRouteRouteWithChildren
+  '/dashboard': typeof DashboardRouteRouteWithChildren
+  '/register-org': typeof AuthRegisterOrgRoute
+  '/sign-in': typeof AuthSignInRoute
+  '/sign-up': typeof AuthSignUpRoute
+  '/dashboard/settings': typeof DashboardSettingsRoute
+  '/': typeof PublicIndexRoute
+  '/dashboard/': typeof DashboardIndexRoute
 }
 
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/PrivateRoutes': typeof PrivateRoutesRoute
-  '/PublicRoutes': typeof PublicRoutesRoute
-  '/routeTree': typeof RouteTreeRoute
-  '/routes': typeof RoutesRoute
+  '': typeof AuthRouteRouteWithChildren
+  '/register-org': typeof AuthRegisterOrgRoute
+  '/sign-in': typeof AuthSignInRoute
+  '/sign-up': typeof AuthSignUpRoute
+  '/dashboard/settings': typeof DashboardSettingsRoute
+  '/': typeof PublicIndexRoute
+  '/dashboard': typeof DashboardIndexRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
-  '/': typeof IndexRoute
-  '/PrivateRoutes': typeof PrivateRoutesRoute
-  '/PublicRoutes': typeof PublicRoutesRoute
-  '/routeTree': typeof RouteTreeRoute
-  '/routes': typeof RoutesRoute
+  '/_auth': typeof AuthRouteRouteWithChildren
+  '/_public': typeof PublicRouteRouteWithChildren
+  '/dashboard': typeof DashboardRouteRouteWithChildren
+  '/_auth/register-org': typeof AuthRegisterOrgRoute
+  '/_auth/sign-in': typeof AuthSignInRoute
+  '/_auth/sign-up': typeof AuthSignUpRoute
+  '/dashboard/settings': typeof DashboardSettingsRoute
+  '/_public/': typeof PublicIndexRoute
+  '/dashboard/': typeof DashboardIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/PrivateRoutes' | '/PublicRoutes' | '/routeTree' | '/routes'
+  fullPaths:
+    | ''
+    | '/dashboard'
+    | '/register-org'
+    | '/sign-in'
+    | '/sign-up'
+    | '/dashboard/settings'
+    | '/'
+    | '/dashboard/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/PrivateRoutes' | '/PublicRoutes' | '/routeTree' | '/routes'
+  to:
+    | ''
+    | '/register-org'
+    | '/sign-in'
+    | '/sign-up'
+    | '/dashboard/settings'
+    | '/'
+    | '/dashboard'
   id:
     | '__root__'
-    | '/'
-    | '/PrivateRoutes'
-    | '/PublicRoutes'
-    | '/routeTree'
-    | '/routes'
+    | '/_auth'
+    | '/_public'
+    | '/dashboard'
+    | '/_auth/register-org'
+    | '/_auth/sign-in'
+    | '/_auth/sign-up'
+    | '/dashboard/settings'
+    | '/_public/'
+    | '/dashboard/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  PrivateRoutesRoute: typeof PrivateRoutesRoute
-  PublicRoutesRoute: typeof PublicRoutesRoute
-  RouteTreeRoute: typeof RouteTreeRoute
-  RoutesRoute: typeof RoutesRoute
+  AuthRouteRoute: typeof AuthRouteRouteWithChildren
+  PublicRouteRoute: typeof PublicRouteRouteWithChildren
+  DashboardRouteRoute: typeof DashboardRouteRouteWithChildren
 }
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  PrivateRoutesRoute: PrivateRoutesRoute,
-  PublicRoutesRoute: PublicRoutesRoute,
-  RouteTreeRoute: RouteTreeRoute,
-  RoutesRoute: RoutesRoute,
+  AuthRouteRoute: AuthRouteRouteWithChildren,
+  PublicRouteRoute: PublicRouteRouteWithChildren,
+  DashboardRouteRoute: DashboardRouteRouteWithChildren,
 }
 
 export const routeTree = rootRoute
@@ -159,27 +279,55 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/",
-        "/PrivateRoutes",
-        "/PublicRoutes",
-        "/routeTree",
-        "/routes"
+        "/_auth",
+        "/_public",
+        "/dashboard"
       ]
     },
-    "/": {
-      "filePath": "index.tsx"
+    "/_auth": {
+      "filePath": "_auth/route.tsx",
+      "children": [
+        "/_auth/register-org",
+        "/_auth/sign-in",
+        "/_auth/sign-up"
+      ]
     },
-    "/PrivateRoutes": {
-      "filePath": "PrivateRoutes.tsx"
+    "/_public": {
+      "filePath": "_public/route.tsx",
+      "children": [
+        "/_public/"
+      ]
     },
-    "/PublicRoutes": {
-      "filePath": "PublicRoutes.tsx"
+    "/dashboard": {
+      "filePath": "dashboard/route.tsx",
+      "children": [
+        "/dashboard/settings",
+        "/dashboard/"
+      ]
     },
-    "/routeTree": {
-      "filePath": "routeTree.ts"
+    "/_auth/register-org": {
+      "filePath": "_auth/register-org.tsx",
+      "parent": "/_auth"
     },
-    "/routes": {
-      "filePath": "routes.tsx"
+    "/_auth/sign-in": {
+      "filePath": "_auth/sign-in.tsx",
+      "parent": "/_auth"
+    },
+    "/_auth/sign-up": {
+      "filePath": "_auth/sign-up.tsx",
+      "parent": "/_auth"
+    },
+    "/dashboard/settings": {
+      "filePath": "dashboard/settings.tsx",
+      "parent": "/dashboard"
+    },
+    "/_public/": {
+      "filePath": "_public/index.tsx",
+      "parent": "/_public"
+    },
+    "/dashboard/": {
+      "filePath": "dashboard/index.tsx",
+      "parent": "/dashboard"
     }
   }
 }
