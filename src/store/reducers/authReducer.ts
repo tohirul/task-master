@@ -7,14 +7,14 @@ export const authReducer = (
   action: StoreAction
 ): AuthState => {
   switch (action.type) {
-    case auth_action_types.USER_LOGIN:
+    case auth_action_types?.USER_LOGIN:
       return {
         ...state,
         isAuthenticated: true,
-        token: action.payload.token,
+        token: action?.payload?.token,
       };
 
-    case auth_action_types.USER_LOGOUT:
+    case auth_action_types?.USER_LOGOUT:
       return {
         ...state,
         isAuthenticated: false,

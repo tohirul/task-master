@@ -58,9 +58,6 @@
       "@/providers": [
         "./src/providers/*"
       ],
-      "@/lib": [
-        "./src/lib/*"
-      ],
     }
   },
   "include": [

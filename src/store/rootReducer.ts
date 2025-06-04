@@ -7,7 +7,7 @@ export const rootReducer = (
 ): StoreState => {
   return {
     ...state,
-    auth: authReducer(state.auth, action),
+    auth: authReducer(state?.auth, action),
     // Add other reducers here (e.g., userReducer: userReducer(state.user, action))
   };
 };

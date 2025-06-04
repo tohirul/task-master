@@ -1,11 +1,6 @@
-import React from "react";
+// pages/gen/Home.tsx
 
-const Home = (): React.JSX.Element => {
-  return (
-    <div>
-      <h1 className="text-2xl">This is home</h1>
-    </div>
-  );
-};
-
-export default Home;
+export default function Home() {
+  return <div>Hello World</div>;
+}
+Home.displayName = "Home";

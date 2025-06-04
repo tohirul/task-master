@@ -1,48 +1,8 @@
 ```
 └── 📁Task-Master
-        └── COMMIT_EDITMSG
-        └── config
-        └── description
-        └── FETCH_HEAD
-        └── HEAD
-        └── 📁hooks
-        └── index
-        └── 📁info
-            └── exclude
-        └── 📁logs
-            └── HEAD
-            └── 📁refs
-                └── 📁heads
-                    └── development
-                    └── main
-                    └── production
-                    └── test
-                └── 📁remotes
-                    └── 📁origin
-                        └── development
-                        └── HEAD
-                        └── main
-                        └── production
-                        └── test
-        └── 📁objects
-        └── 📁refs
-            └── 📁heads
-                └── development
-                └── main
-                └── production
-                └── test
-            └── 📁remotes
-                └── 📁origin
-                    └── development
-                    └── HEAD
-                    └── main
-                    └── production
-                    └── test
-            └── 📁tags
     └── 📁public
         └── vite.svg
     └── 📁src
-        └── App.tsx
         └── 📁assets
         └── 📁components
         └── 📁context
@@ -58,7 +18,11 @@
                 └── axiosInstance.ts
                 └── helper.ts
         └── 📁hooks
+            └── useAuth.ts
         └── index.css
+        └── 📁lib
+            └── queryClient.ts
+            └── routerClient.ts
         └── main.tsx
         └── 📁pages
             └── 📁admin
@@ -67,7 +31,9 @@
                 └── Signin.tsx
                 └── Signup.tsx
             └── 📁gen
+                └── About.tsx
                 └── Dashboard.tsx
+                └── Error.tsx
                 └── Forbidden.tsx
                 └── Home.tsx
                 └── NotFound.tsx
@@ -78,12 +44,26 @@
             └── 📁user
                 └── MyTasks.tsx
         └── 📁providers
+            └── AuthProvider.tsx
+            └── RouterProvider.tsx
             └── StoreProviders.tsx
         └── 📁routes
-            └── index.tsx
-            └── PrivateRoutes.tsx
-            └── PublicRoutes.tsx
-            └── routes.ts
+            └── __root.tsx
+            └── 📁__tanstack__
+            └── 📁_auth
+                └── register-org.tsx
+                └── route.tsx
+                └── sign-in.tsx
+                └── sign-up.tsx
+            └── 📁_public
+                └── about.tsx
+                └── index.tsx
+                └── route.tsx
+            └── 📁dashboard
+                └── index.tsx
+                └── route.tsx
+                └── settings.tsx
+        └── routeTree.gen.ts
         └── 📁store
             └── action.ts
             └── initialStates.ts
