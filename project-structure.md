@@ -1,13 +1,32 @@
 ```
 └── 📁Task-Master
+        └── 📁refs
+            └── 📁heads
+                └── development
+                └── main
+                └── production
+                └── test
+            └── 📁remotes
+                └── 📁origin
+                    └── development
+                    └── HEAD
+                    └── main
+                    └── production
+                    └── test
+            └── stash
+            └── 📁tags
     └── 📁public
         └── vite.svg
     └── 📁src
+        └── App.tsx
         └── 📁assets
         └── 📁components
         └── 📁context
-            └── StoreContext.ts
+            └── RouterContext.ts
         └── 📁core
+            └── 📁lib
+                └── queryClient.ts
+                └── routerClient.tsx
             └── 📁types
                 └── action.types.ts
                 └── auth.types.ts
@@ -16,61 +35,48 @@
             └── 📁utils
                 └── apiPaths.ts
                 └── axiosInstance.ts
+                └── checkAuth.ts
                 └── helper.ts
         └── 📁hooks
-            └── useAuth.ts
         └── index.css
-        └── 📁lib
-            └── queryClient.ts
-            └── routerClient.ts
         └── main.tsx
         └── 📁pages
             └── 📁admin
             └── 📁auth
+                └── layout.tsx
                 └── RegisterOrg.tsx
                 └── Signin.tsx
                 └── Signup.tsx
+            └── 📁Dashboard
+                └── index.tsx
+                └── layout.tsx
+                └── Settings.tsx
             └── 📁gen
                 └── About.tsx
-                └── Dashboard.tsx
                 └── Error.tsx
                 └── Forbidden.tsx
                 └── Home.tsx
+                └── layout.tsx
                 └── NotFound.tsx
+                └── Services.tsx
             └── 📁Manager
                 └── ManageEmployees.tsx
                 └── ManageProjects.tsx
                 └── ManageTasks.tsx
             └── 📁user
-                └── MyTasks.tsx
+                └── Tasks.tsx
         └── 📁providers
+            └── AppProvider.tsx
             └── AuthProvider.tsx
             └── RouterProvider.tsx
-            └── StoreProviders.tsx
-        └── 📁routes
-            └── __root.tsx
-            └── 📁__tanstack__
-            └── 📁_auth
-                └── register-org.tsx
-                └── route.tsx
-                └── sign-in.tsx
-                └── sign-up.tsx
-            └── 📁_public
-                └── about.tsx
+        └── 📁router
+            └── 📁guard
                 └── index.tsx
-                └── route.tsx
-            └── 📁dashboard
-                └── index.tsx
-                └── route.tsx
-                └── settings.tsx
-        └── routeTree.gen.ts
-        └── 📁store
-            └── action.ts
-            └── initialStates.ts
-            └── 📁reducers
-                └── authReducer.ts
-            └── rootReducer.ts
-            └── store.ts
+            └── index.tsx
+            └── 📁routes
+                └── auth.tsx
+                └── private.tsx
+                └── public.tsx
         └── vite-env.d.ts
     └── .gitignore
     └── eslint.config.js

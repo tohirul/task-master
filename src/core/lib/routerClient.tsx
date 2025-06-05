@@ -9,7 +9,7 @@ export const router = createRouter({
 });
 
 declare module "@tanstack/react-router" {
-  interface Register {
+  interface RegisterRouter {
     router: typeof router;
   }
 }

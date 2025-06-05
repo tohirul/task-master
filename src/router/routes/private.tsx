@@ -17,7 +17,7 @@ const dashboardRoutes = createRoute({
       checkAuth();
     } catch {
       throw redirect({
-        to: "/",
+        to: "/sign-in",
         search: { redirectTo: location.pathname },
       });
     }

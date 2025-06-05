@@ -8,7 +8,7 @@ import { authRoutes } from "@/router/routes/auth";
 export const rootRouter = createRootRoute();
 
 export const routeTree = rootRouter.addChildren([
+  ...authRoutes,
   ...publicRoutes,
   ...privateRoutes,
-  ...authRoutes,
 ]);

@@ -9,7 +9,7 @@ import RegisterOrg from "@/pages/auth/RegisterOrg";
 
 const authRoute = createRoute({
   getParentRoute: () => rootRouter,
-  path: "auth",
+  id: "pathlessAuthLayout",
   component: () => <AuthLayout />,
 });
 
