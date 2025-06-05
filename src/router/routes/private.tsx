@@ -1,5 +1,5 @@
 // src/router/routes/private.tsx
-import { createRoute } from "@tanstack/react-router";
+import { createRoute, redirect } from "@tanstack/react-router";
 
 import Dashboard from "@/pages/Dashboard";
 
@@ -7,36 +7,41 @@ import { rootRouter } from "..";
 import Settings from "@/pages/Dashboard/Settings";
 import DashboardLayout from "@/pages/Dashboard/layout";
 import Tasks from "@/pages/user/Tasks";
-import { AuthProvider } from "@/providers/AuthProvider";
+import { checkAuth } from "@/core/utils/checkAuth";
 
-const dashboardRoute = createRoute({
+const dashboardRoutes = createRoute({
   getParentRoute: () => rootRouter,
   path: "dashboard",
-  component: () => (
-    <AuthProvider>
-      <DashboardLayout />
-    </AuthProvider>
-  ),
+  beforeLoad: async ({ location }) => {
+    try {
+      checkAuth();
+    } catch {
+      throw redirect({
+        to: "/",
+        search: { redirectTo: location.pathname },
+      });
+    }
+  },
+  component: () => <DashboardLayout />,
 });
 
 const dashboardIndexRoute = createRoute({
-  getParentRoute: () => dashboardRoute,
+  getParentRoute: () => dashboardRoutes,
   path: "/",
   component: Dashboard,
 });
 
 const settingsRoute = createRoute({
-  getParentRoute: () => dashboardRoute,
+  getParentRoute: () => dashboardRoutes,
   path: "settings",
   component: Settings,
 });
 
 const tasksRoute = createRoute({
-  getParentRoute: () => dashboardRoute,
+  getParentRoute: () => dashboardRoutes,
   path: "tasks",
   component: Tasks,
 });
+dashboardRoutes.addChildren([dashboardIndexRoute, settingsRoute, tasksRoute]);
 
-export const privateRoutes = [
-  dashboardRoute.addChildren([dashboardIndexRoute, settingsRoute, tasksRoute]),
-];
+export const privateRoutes = [dashboardRoutes];
