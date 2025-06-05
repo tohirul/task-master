@@ -58,6 +58,9 @@
       "@/providers": [
         "./src/providers/*"
       ],
+      "@/ui/*": [
+        "./src/components/ui/*"
+      ],
     }
   },
   "include": [
